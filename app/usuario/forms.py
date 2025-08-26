@@ -1,6 +1,7 @@
 from django import forms
 from .models import Usuario
 from django.core.exceptions import ValidationError
+from django.contrib.auth.hashers import make_password
 
 class RegisterForm(forms.ModelForm):
     contraseña = forms.CharField(
@@ -48,6 +49,7 @@ class LoginForm(forms.Form):
     )
 
 class UsuarioUpdateForm(forms.ModelForm):
+    # contraseña no es obligatoria
     contraseña = forms.CharField(
         widget=forms.PasswordInput(attrs={'class': 'form-control'}),
         required=False
@@ -55,10 +57,23 @@ class UsuarioUpdateForm(forms.ModelForm):
 
     class Meta:
         model = Usuario
-        fields = ['correo', 'contraseña', 'celular','telefono',]
+        fields = ['correo', 'celular', 'telefono', 'contraseña']
         widgets = {
             'correo': forms.EmailInput(attrs={'class': 'form-control'}),
             'celular': forms.TextInput(attrs={'class': 'form-control'}),
             'telefono': forms.TextInput(attrs={'class': 'form-control'}),
-            
         }
+
+    def save(self, commit=True):
+        usuario = super().save(commit=False)
+        nueva_contrasena = self.cleaned_data.get('contraseña')
+
+        if nueva_contrasena:  # solo actualiza si se ingresa algo
+            usuario.contraseña = make_password(nueva_contrasena)
+        else:
+            # si no hay contraseña nueva, mantenemos la que ya estaba
+            usuario.contraseña = Usuario.objects.get(pk=usuario.pk).contraseña
+
+        if commit:
+            usuario.save()
+        return usuario
