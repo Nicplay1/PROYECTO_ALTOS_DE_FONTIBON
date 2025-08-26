@@ -9,6 +9,15 @@
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <link rel="stylesheet" href="{% static 'Usuario/fonts.css' %}">
 </head>
+<style>
+/* Ajustes para que el input respete los íconos */
+#id_contraseña {
+  padding-left: 35px;   /* espacio para el candado */
+  padding-right: 3px;  /* espacio para el ojo */
+  box-sizing: border-box;
+}
+
+</style>
 <body>
   <div class="container">
     <!-- Imagen izquierda -->
@@ -19,7 +28,7 @@
     <!-- Formulario -->
     <div class="form-side">
       <div class="logo">
-        <img src="{% static 'Usuario/IMG/Logo Fontibon.png' %}" alt="Altos de Fontibón">
+        <img src="{% static 'IMG/Logo Fontibon.png' %}" alt="Altos de Fontibón">
         <h1>¡Fontibón Contigo!</h1>
         <p>Conoce y gestiona todo sobre tu <br>próximo <b>apartamento</b>.</p>
       </div>
@@ -32,14 +41,24 @@
         {% endfor %}
 
         <div class="input-box">
-          <i class="fa fa-user"></i>
+          <p style="margin-bottom: 2px; text-align: left;" >Ingresa tu numero de documento</p>
+          <i class="fa fa-user" style="margin: 7px 0 0 0; "></i>
           {{ form.numero_documento }}
         </div>
 
         <div class="input-box">
-          <i class="fa fa-lock"></i>
-          {{ form.contraseña }}
-        </div>
+          <p style="margin-bottom: 2px; text-align: left;">Ingresa tu contraseña</p>
+          <div style="position: relative; width: 100%;">
+            <!-- Ícono candado -->
+            <i class="fa fa-lock" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%);"></i>
+            <!-- Input contraseña -->
+            {{ form.contraseña }}
+            <!-- Ícono ojo -->
+            <i class="fa fa-eye toggle-password" onclick="togglePassword()" style="margin: 0 0 0 261px;"></i>
+          </div>
+      </div>
+      <script src="{% static 'js/usuario/login.js' %}"></script>
+
 
         <div class="btn-box">
         <button class="btn" type="submit">Ingresar</button>
