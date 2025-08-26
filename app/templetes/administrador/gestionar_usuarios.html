@@ -113,7 +113,7 @@
 <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg flex flex-col items-center py-8 z-40 md:translate-x-0 transform -translate-x-full md:transform-none">
     <!-- Logo -->
     <a href="#" class="flex flex-col items-center space-y-1 mb-10">
-        <img src="{% static 'img/logo.jpeg' %}" alt="Mi imagen">
+        <img src="{% static 'img/WhatsApp Image 2025-08-25 at 10.28.01 PM.jpeg' %}" alt="Mi imagen">
     </a>
 
     <!-- Links -->
@@ -134,7 +134,7 @@
 
     <!-- Usuario y Logout -->
     <div class="mt-auto w-full px-4 mb-4 space-y-2">
-        <a href="" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition text-green-600">
+       <a href="{% url 'perfil_usuario' %}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition text-green-600">
             <i class="fas fa-user"></i> Usuario
         </a>
         <a href="{% url 'logout' %}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-red-50 transition text-red-500">
