@@ -1,14 +1,12 @@
-{% load static %}
-
+{% load static%}
 
 <!DOCTYPE html>
 <html lang="es">
 <head>
-    <link rel="stylesheet" href="{% static 'css/residente/zonas_comunes/detalle_reserva.css' %}">
     <meta charset="UTF-8">
     <title>Reservar Zona</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    
+
     <!-- Tailwind -->
     <script src="https://cdn.tailwindcss.com"></script>
 
@@ -26,7 +24,11 @@
     <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
 
-
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        #sidebar { transition: transform 0.3s ease-in-out; }
+        #sidebar.collapsed { transform: translateX(-100%); }
+    </style>
 </head>
 <body class="bg-gray-100 flex">
 
@@ -41,8 +43,8 @@
 <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg flex flex-col items-center py-8 z-40 md:translate-x-0 transform -translate-x-full md:transform-none">
     <!-- Logo -->
     <a href="#" class="flex flex-col items-center space-y-1 mb-10">
-        <img alt="Logo" class="h-12 w-12 rounded-full shadow" src="https://storage.googleapis.com/a1aa/image/a608eb96-4849-4e12-5279-e6267b0d36d5.jpg"/>
-        <span class="text-sm font-semibold text-gray-700">MiEmpresa</span>
+        <img src="{% static 'img/WhatsApp Image 2025-08-25 at 10.28.01 PM.jpeg' %}" alt="Mi imagen">
+
     </a>
 
     <!-- Links -->
@@ -69,9 +71,10 @@
     </div>
 </nav>
 
+
 <!-- CONTENIDO -->
 <main class="flex-1 ml-0 md:ml-64 p-6 transition-all duration-300 w-full">
-    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">📋 Mis Reservas</h2>
+    <h2 class="text-3xl font-bold text-center text-gray-800 mb-6"> Mis Reservas</h2>
 
     {% if reservas %}
     <div class="overflow-x-auto shadow-md rounded-lg">
@@ -108,7 +111,7 @@
                         <form action="{% url 'eliminar_reserva' reserva.id_reserva %}" method="post" class="inline-block">
                             {% csrf_token %}
                             <button type="submit" class="btn btn-sm btn-danger" onclick="return confirm('¿Seguro que deseas eliminar esta reserva?');">
-                                🗑️ Eliminar
+                                 Eliminar
                             </button>
                         </form>
                     </td>
