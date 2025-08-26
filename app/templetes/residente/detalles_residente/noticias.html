@@ -1,3 +1,5 @@
+{% load static%}
+
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -41,8 +43,8 @@
 <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg flex flex-col items-center py-8 z-40 md:translate-x-0 transform -translate-x-full md:transform-none">
     <!-- Logo -->
     <a href="#" class="flex flex-col items-center space-y-1 mb-10">
-        <img alt="Logo" class="h-12 w-12 rounded-full shadow" src="https://storage.googleapis.com/a1aa/image/a608eb96-4849-4e12-5279-e6267b0d36d5.jpg"/>
-        <span class="text-sm font-semibold text-gray-700">MiEmpresa</span>
+        <img src="{% static 'img/WhatsApp Image 2025-08-25 at 10.28.01 PM.jpeg' %}" alt="Mi imagen">
+
     </a>
 
     <!-- Links -->
