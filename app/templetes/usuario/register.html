@@ -19,7 +19,7 @@
     <!-- Formulario -->
     <div class="form-side">
       <div class="logo">
-        <img src="{% static 'Usuario/IMG/Logo Fontibon - 1.jpg' %}" alt="Altos de Fontibón">
+        <img src="{% static '/IMG/Logo Fontibon - 1.jpg' %}" alt="Altos de Fontibón">
         <h1>¡Fontibón Contigo!</h1>
       </div>
 
@@ -63,9 +63,16 @@
           {{ form.celular }}
         </div>
         <div class="input-box">
-          <i class="fa fa-lock"></i>
-          {{ form.contraseña }}
-        </div>
+          <div style="position: relative; width: 100%;">
+            <!-- Ícono candado -->
+            <i class="fa fa-lock" style="position: absolute; top: 50%; left: 10px; transform: translateY(-50%);"></i>
+            <!-- Input contraseña -->
+            {{ form.contraseña }}
+            <!-- Ícono ojo -->
+            <i class="fa fa-eye toggle-password" onclick="togglePassword()" style="margin: 0 0 0 140px;"></i>
+          </div>
+          <script src="{% static 'js/usuario/register.js' %}"></script>
+      </div>
         <div class="input-box">
           <i class="fa fa-lock"></i>
           {{ form.confirmar_contraseña }}
