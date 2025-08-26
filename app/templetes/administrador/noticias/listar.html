@@ -3,7 +3,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <title>Gestionar Noticias</title>
+    <title>Gestionar Reservas</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- Tailwind + Bootstrap -->
@@ -12,13 +12,12 @@
 
     <!-- Font Awesome -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
-    <script src="https://kit.fontawesome.com/a2e0e9c6c4.js" crossorigin="anonymous"></script>
 
     <!-- Fuente -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet"/>
+
     <style>
         body { font-family: 'Inter', sans-serif; }
-
         /* Sidebar móvil */
         #sidebar {
             transition: transform 0.3s ease-in-out;
@@ -31,49 +30,51 @@
 
 <body class="bg-gray-100 flex">
 
-<!-- BOTÓN HAMBURGUESA MÓVIL -->
-<div class="md:hidden fixed top-4 left-4 z-50">
-    <button id="toggleSidebar" class="text-gray-700 bg-white p-2 rounded-lg shadow-lg focus:outline-none">
-        <i class="fas fa-bars fa-lg"></i>
-    </button>
-</div>
+    <!-- BOTÓN HAMBURGUESA MÓVIL -->
+    <div class="md:hidden fixed top-4 left-4 z-50">
+        <button id="toggleSidebar" class="text-gray-700 bg-white p-2 rounded-lg shadow-lg focus:outline-none">
+            <i class="fas fa-bars fa-lg"></i>
+        </button>
+    </div>
 
-<!-- NAVBAR VERTICAL -->
-<nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg flex flex-col items-center py-8 z-40 md:translate-x-0 transform -translate-x-full md:transform-none">
-    <!-- Logo -->
-    <a href="#" class="flex flex-col items-center space-y-1 mb-10">
-        <img alt="Logo" class="h-12 w-12 rounded-full shadow" 
-             src="https://storage.googleapis.com/a1aa/image/a608eb96-4849-4e12-5279-e6267b0d36d5.jpg"/>
-        <span class="text-sm font-semibold text-gray-700">MiEmpresa</span>
+    <!-- NAVBAR VERTICAL -->
+    <nav id="sidebar" class="fixed top-0 left-0 h-full w-64 bg-white shadow-lg flex flex-col items-center py-8 z-40 md:translate-x-0 transform -translate-x-full md:transform-none">
+        <!-- Logo -->
+         <a href="#" class="flex flex-col items-center space-y-1 mb-10">
+        <img src="{% static 'img/WhatsApp Image 2025-08-25 at 10.28.01 PM.jpeg' %}" alt="Mi imagen">
+
     </a>
 
-    <!-- Links -->
-    <div class="flex flex-col space-y-6 flex-grow w-full px-4">
-        <a class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition text-blue-600 font-semibold" href="{% url 'listar_noticias' %}">
-            <i class="fas fa-newspaper text-blue-600"></i> Noticias
-        </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition text-gray-700" href="{% url 'gestionar_usuarios' %}">
-            <i class="fas fa-building text-orange-500"></i> Usuario
-        </a>
-        <a class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition text-gray-700" href="{% url 'gestionar_reservas' %}">
-            <i class="fas fa-calendar-check text-green-500"></i> Reservas
-        </a>
-    </div>
+        <!-- Links -->
+        <div class="flex flex-col space-y-6 flex-grow w-full px-4">
+            <a class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition text-gray-700"
+               href="{% url 'gestionar_usuarios' %}">
+                <i class="fas fa-users-cog text-purple-600"></i> Gestionar Usuarios
+            </a>
+            <a class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition text-gray-700"
+               href="{% url 'gestionar_reservas' %}">
+                <i class="fas fa-tasks text-teal-500"></i> Gestionar Reservas
+            </a>
+            <a class="flex items-center gap-3 p-2 rounded-lg hover:bg-blue-50 transition text-gray-700"
+               href="{% url 'listar_noticias' %}">
+                <i class="fas fa-newspaper text-blue-600"></i> Noticias
+            </a>
+        </div>
 
-    <!-- Usuario y Logout -->
-    <div class="mt-auto w-full px-4 mb-4 space-y-2">
-        <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition text-green-600">
-            <i class="fas fa-user"></i> Usuario
-        </a>
-        <a href="{% url 'logout' %}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-red-50 transition text-red-500">
-            <i class="fas fa-sign-out-alt"></i> Salir
-        </a>
-    </div>
-</nav>
+        <!-- Usuario y Logout -->
+        <div class="mt-auto w-full px-4 mb-4 space-y-2">
+            <a href="#" class="flex items-center gap-3 p-2 rounded-lg hover:bg-green-50 transition text-green-600">
+                <i class="fas fa-user"></i> Usuario
+            </a>
+            <a href="{% url 'logout' %}" class="flex items-center gap-3 p-2 rounded-lg hover:bg-red-50 transition text-red-500">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </a>
+        </div>
+    </nav>
 
 <!-- CONTENIDO -->
 <main class="flex-1 ml-0 md:ml-64 p-6 md:p-10 transition-all duration-300 w-full">
-    <h2 class="mb-6 text-3xl font-bold text-center text-gray-800">📢 Gestionar Noticias</h2>
+    <h2 class="mb-6 text-3xl font-bold text-center text-gray-800"> Gestionar Noticias</h2>
 
     <!-- Botón Crear Noticia -->
     <div class="text-center mb-6">
