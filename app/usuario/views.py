@@ -5,6 +5,7 @@ from .models import*
 from .forms import*
 from .decorators import login_requerido
 from django.contrib.auth import update_session_auth_hash
+from django.contrib.auth.hashers import make_password
 
 def register_view(request):
     if request.method == "POST":
@@ -98,14 +99,10 @@ def cambiar_contrasena(request):
 
         if nueva and nueva == confirmar:
             user = request.usuario
-            if hasattr(user, 'set_password'):
-                user.set_password(nueva)  # 🔑 encripta si es AbstractUser
-            else:
-                user.contraseña = nueva  # si es CharField plano (no recomendado)
 
+            # 🔑 Encripta la contraseña siempre
+            user.contraseña = make_password(nueva)
             user.save()
-            if hasattr(user, 'set_password'):
-                update_session_auth_hash(request, user)  # mantiene sesión
 
             messages.success(request, "Contraseña actualizada correctamente.")
         else:
